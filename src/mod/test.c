@@ -1,5 +1,5 @@
-#include "mod.h"
 #include <assert.h>
+#include <mod/mod.h>
 #include <stdio.h>
 
 void
