@@ -6,7 +6,7 @@ project(modlib C)
 
 # Standard and compiler flags
 set(CMAKE_C_STANDARD 99)
-add_compile_options(-pedantic -Wall -O3)
+#add_compile_options(-pedantic -Wall -O3)
 
 # ASAN
 #add_compile_options(-fsanitize=address)
