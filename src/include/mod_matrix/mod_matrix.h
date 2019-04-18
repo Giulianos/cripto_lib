@@ -51,4 +51,13 @@ mod_matrix_mul(matrix_t* m1, matrix_t* m2);
 matrix_t*
 mod_matrix_mul_esc(uint32_t e, matrix_t* m);
 
+/**
+ * @brief Transpose m
+ *
+ * @param m
+ * @return matrix_t* a new matrix with m transposed
+ */
+matrix_t*
+mod_matrix_transpose(matrix_t* m);
+
 #endif // MOD_MATRIX_H_

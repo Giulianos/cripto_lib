@@ -52,9 +52,49 @@ mod_matrix_sub(matrix_t* m1, matrix_t* m2)
 }
 
 matrix_t*
+mod_matrix_transpose(matrix_t* m)
+{
+  matrix_t* ans = NEW_MATRIX(m->cols, m->rows);
+  ans->rows     = m->cols;
+  ans->cols     = m->rows;
+
+  for (uint32_t row = 0; row < m->rows; row++) {
+    for (uint32_t col = 0; col < m->cols; col++) {
+      ans->values[col * ans->cols + row] = m->values[row * m->cols + col];
+    }
+  }
+
+  return ans;
+}
+
+matrix_t*
 mod_matrix_mul(matrix_t* m1, matrix_t* m2)
 {
-  return NULL;
+  if (m1->cols != m2->rows) {
+    fprintf(stderr, "Inner matrix dimensions must match!");
+    exit(EXIT_FAILURE);
+  }
+
+  matrix_t* ans = NEW_MATRIX(m1->rows, m2->cols);
+  ans->rows     = m1->rows;
+  ans->cols     = m2->cols;
+
+  uint32_t inner_dim = m1->cols;
+  uint32_t sum;
+
+  for (uint32_t row = 0; row < ans->rows; row++) {
+    for (uint32_t col = 0; col < ans->cols; col++) {
+      sum = 0;
+      for (uint32_t k = 0; k < inner_dim; k++) {
+        sum = mod_sum(sum,
+                      mod_mul(m1->values[row * m1->cols + k],
+                              m2->values[k * m2->cols + col]));
+      }
+      ans->values[row * ans->cols + col] = sum;
+    }
+  }
+
+  return ans;
 }
 
 matrix_t*
