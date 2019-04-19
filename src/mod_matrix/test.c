@@ -184,43 +184,6 @@ test_transpose()
   printf("[test_transpose] passed tests\n");
 }
 
-void
-test_mul_performance()
-{
-  matrix_t* m1 = NEW_MATRIX(344, 501);
-  matrix_t* m2 = NEW_MATRIX(501, 452);
-
-  m1->rows = 344;
-  m1->cols = 501;
-
-  m2->rows = 501;
-  m2->cols = 452;
-
-  uint32_t i;
-
-  i = m1->rows * m1->cols;
-  while (i) {
-    m1->values[i--] = (1.0 * rand() / (RAND_MAX + 1.0)) * 251;
-  }
-
-  i = m2->rows * m2->cols;
-  while (i) {
-    m2->values[i--] = (1.0 * rand() / (RAND_MAX + 1.0)) * 251;
-  }
-
-  struct timeval start, stop;
-  double secs = 0;
-
-  gettimeofday(&start, NULL);
-  matrix_t* ans = mod_matrix_mul(m1, m2);
-  gettimeofday(&stop, NULL);
-  secs = (double)(stop.tv_usec - start.tv_usec) / 1000000 +
-         (double)(stop.tv_sec - start.tv_sec);
-  printf("time taken %f\n", secs);
-
-  printf("[test_mul_performance] runned\n");
-}
-
 int
 main(int argc, char* argv[])
 {
@@ -228,7 +191,6 @@ main(int argc, char* argv[])
   test_sum();
   test_sub();
   test_mul();
-  test_mul_performance();
   test_mul_esc();
   test_transpose();
   cleanup();

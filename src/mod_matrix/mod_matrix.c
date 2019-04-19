@@ -79,6 +79,9 @@ mod_matrix_mul(matrix_t* m1, matrix_t* m2)
   ans->rows     = m1->rows;
   ans->cols     = m2->cols;
 
+  /** Transpose m2 to use memory secuentially */
+  matrix_t* m2_tr = mod_matrix_transpose(m2);
+
   uint32_t inner_dim = m1->cols;
   uint32_t sum;
 
@@ -88,11 +91,14 @@ mod_matrix_mul(matrix_t* m1, matrix_t* m2)
       for (uint32_t k = 0; k < inner_dim; k++) {
         sum = mod_sum(sum,
                       mod_mul(m1->values[row * m1->cols + k],
-                              m2->values[k * m2->cols + col]));
+                              m2_tr->values[col * m2_tr->cols + k]));
       }
       ans->values[row * ans->cols + col] = sum;
     }
   }
+
+  /** Free m2_tr as it won't be used */
+  free(m2_tr);
 
   return ans;
 }
