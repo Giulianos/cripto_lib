@@ -1,7 +1,9 @@
 #!/bin/bash
 ./clear.sh
 ./compile.sh
-TESTS_SUITES=`find build/target/test -name '*_test'`
+cd build/target/test
+echo -e ''
+TESTS_SUITES=`find . -name '*_test'`
 for SUITE in $TESTS_SUITES
 do
   echo -e "Running $SUITE"

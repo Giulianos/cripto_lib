@@ -1,5 +1,6 @@
 {
   BasedOnStyle: Mozilla,
   AlignConsecutiveAssignments: 'true',
+  AlignConsecutiveDeclarations: 'true',
   PointerAlignment: 'Left'
 }

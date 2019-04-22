@@ -11,7 +11,7 @@ typedef struct bmp* bmp_t;
  * @param fd an open file descriptor to read the bmp from
  * @return bmp_t*
  */
-bmp_t*
+bmp_t
 bmp_load(int fd);
 
 /**
@@ -21,7 +21,7 @@ bmp_load(int fd);
  * @return uint32_t
  */
 uint32_t
-bmp_get_width(const bmp_t* bmp);
+bmp_get_width(const bmp_t bmp);
 
 /**
  * @brief Returns the height of the bitmap in pixels
@@ -30,6 +30,16 @@ bmp_get_width(const bmp_t* bmp);
  * @return uint32_t
  */
 uint32_t
-bmp_get_height(const bmp_t* bmp);
+bmp_get_height(const bmp_t bmp);
+
+/**
+ * @brief Releases allocated resources for passed bmp
+ * NOTE: file operations are not handled by the library,
+ * this means, the file descriptor won't be closed.
+ *
+ * @param bmp
+ */
+void
+bmp_free(bmp_t bmp);
 
 #endif // BMP_H_
