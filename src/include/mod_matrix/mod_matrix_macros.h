@@ -7,4 +7,7 @@
 #define NEW_MATRIX(rows, cols)                                                 \
   (malloc(sizeof(matrix_t) + (rows) * (cols) * sizeof(uint32_t)))
 
+#define ELEM(matrix_ptr, row, col)                                             \
+  ((matrix_ptr)->values[(row) * (matrix_ptr)->cols + (col)])
+
 #endif
