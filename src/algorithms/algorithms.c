@@ -59,14 +59,15 @@ algorithms_gauss_row_reduction(const matrix_t* matrix)
   matrix_t* m = NEW_MATRIX(matrix->rows, matrix->cols);
   m->rows     = matrix->rows;
   m->cols     = matrix->cols;
-  memcpy(m->values, matrix->values, m->rows * m->cols * sizeof(uint32_t));
+  memcpy(m->values, matrix->values, m->rows * m->cols * sizeof(*m->values));
 
   uint32_t pivot_row   = 0;
   uint32_t pivot_col   = 0;
-  uint32_t temp_idx    = 0;
   uint32_t pivot_value = 0;
 
   while (pivot_row < m->rows && pivot_col < m->cols) {
+
+    uint32_t temp_idx    = 0;
 
     /** find the first non-zero remaining in column j */
     if (algorithms_find_non_zero_in_column(
