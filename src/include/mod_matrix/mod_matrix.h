@@ -1,5 +1,5 @@
-#ifndef MOD_MATRIX_H_
-#define MOD_MATRIX_H_
+#ifndef MOD_MATRIX_H_08b80052e752c78bea7877589436359b
+#define MOD_MATRIX_H_08b80052e752c78bea7877589436359b
 
 #include <mod/mod.h>
 #include <stdint.h>
@@ -60,4 +60,4 @@ mod_matrix_mul_esc(uint32_t e, matrix_t* m);
 matrix_t*
 mod_matrix_transpose(matrix_t* m);
 
-#endif // MOD_MATRIX_H_
+#endif // MOD_MATRIX_H_08b80052e752c78bea7877589436359b
