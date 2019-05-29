@@ -1,5 +1,9 @@
 # Cripto lib
 
+**Cripto lib** es una biblioteca de funciones que facilita la implementación del TPE de la matería Criptografía y Seguridad.
+
+## Objectivo
+
 En este documento se explica como compilar el código, también se describen los módulos presentes en la biblioteca y las funciones que ofrece cada uno.
 
 Para contribuir al codigo y/o entender la estructura de archivos del proyecto, ver el archivo `CONTRIBUTE.md`(aun no disponible).
@@ -19,7 +23,9 @@ Se incluye un script para compilar (`compile.sh`). Este realiza los pasos "stand
 
 Por defecto los artifacts quedan en `build/target`.
 
-## Modulos
+Para eliminar los binarios se incluye el script `clean.sh`
+
+## Módulos
 
 ### mod
 
